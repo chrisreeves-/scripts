@@ -5,3 +5,4 @@ adduser $user
 echo -e "$user: $user" >> /etc/aliases
 echo Activating new alias
 newaliases
+echo "Mail user added""
