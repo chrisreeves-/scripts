@@ -27,3 +27,4 @@ echo -e "<h1> Welcome to $domain</h1>" >> /var/www/vhosts/$domain/index.html
 echo -e "<p>This is the test page of $domain</p>" >> /var/www/vhosts/$domain/index.html
 echo -e "</body>" >> /var/www/vhosts/$domain/index.html
 echo -e "</html>" >> /var/www/vhosts/$domain/index.html
+echo "Created site $domain located at /var/www/vhosts/$domain"
