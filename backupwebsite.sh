@@ -7,3 +7,4 @@ read domain
 echo ## Create backup location ##
 mkdir -p /backups/$domain
 tar cvf /backups/$domain/$domain-$date.tar /var/www/vhosts/$domain
+echo "Backup is stored in /backups/$domain"
