@@ -25,7 +25,9 @@ else
 	echo "Updating config file"
 	echo "Host $rserver" >> ~/.ssh/config
 	echo "  User root" >> ~/.ssh/config
+	
 	echo "  Hostname $rserver" >> ~/.ssh/config
 	echo "  PreferredAuthentications publickey" >> ~/.ssh/config
 	echo "  IdentityFile ~/.ssh/id_rsa.$rserver" >> ~/.ssh/config
 fi
+echo "Added SSH key for $rserver:$ruser"
