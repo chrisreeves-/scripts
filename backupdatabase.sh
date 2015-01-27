@@ -17,3 +17,4 @@ if [ $retval -ne 0 ]; then
 else
     echo "Backup was succssful"
 fi
+echo "Backup is now placed in /backups/%database name%/"
