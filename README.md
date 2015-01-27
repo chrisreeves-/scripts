@@ -2,6 +2,9 @@
 This is just a small collection of bash scripts I have put together over the last year to help with administration
 of Linux based servers.
 
+## How to install
+git clone https://github.com/chrisreeves-/bash
+
 ## File Descriptions
 
 1. addmailuser.sh = Asks for user, adds it to /etc/aliases and activates it
@@ -19,3 +22,10 @@ Creates mysql user and db, downloads latest version of WP, reconfigs wp-config a
 10. removevhost.sh = Asks for domain, disables site, restarts Apache, removes website files, logs and conf.
 11. sendsshkeys.sh = Asks for server to send to, scp root key to server and append file with .server
 12. update_upgrade.sh = Uses aptitude to update then upgrade
+
+## Contact
+
+Email: chris at reeves dot net dot nz
+Linkedin: http://www.linkedin.com/in/chrisreevesnz
+Website: http://www.chrisreeves.co.nz
+
