@@ -14,3 +14,4 @@ else
 mysql -u $mysqllogin -p$mysqlpass -e "DROP USER '$databaseuser'@'localhost';" ;
 fi ;
 mysql -u $mysqllogin -p$mysqlpass -e "FLUSH PRIVILEGES;"
+echo "Deleted $databasename and $databaseuser from mySQL"
