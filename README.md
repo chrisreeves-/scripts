@@ -3,7 +3,7 @@ This is just a small collection of bash scripts I have put together over the las
 of Linux based servers.
 
 ## How to install
-git clone https://github.com/chrisreeves-/bash
+git clone https://github.com/chrisreeves-/bash.git
 
 ## File Descriptions
 
