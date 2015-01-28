@@ -1,6 +1,8 @@
 #!/bin/bash
 echo -e "Please specify domain name: \c "
 read domain
+echo -e "Please specify the root vhost location *WITHOUT* trailing / example: /var/www/vhosts"
+read vhost
 echo -e "Please specify mySQL login name: \c "
 read mysqllogin
 echo -e "Please specify mySQL login password: \c "
@@ -11,16 +13,16 @@ echo -e "Please specify desired database username: \c "
 read databaseuser
 echo -e "Please specify desired database password: \c "
 read databasepass
-mkdir -p /var/www/vhosts/$domain
-chown www-data:www-data /var/www/vhosts/$domain -R
+mkdir -p $vhost/$domain
+chown www-data:www-data $vhost/$domain -R
 touch /var/log/apache2/$domain-error.log
 touch /var/log/apache2/$domain-access.log
 touch /etc/apache2/sites-available/$domain
 echo -e "<VirtualHost *:80>" >> /etc/apache2/sites-available/$domain
 echo -e "       ServerName $domain" >> /etc/apache2/sites-available/$domain
 echo -e "       ServerAlias www.$domain" >> /etc/apache2/sites-available/$domain
-echo -e "       DocumentRoot /var/www/vhosts/$domain" >> /etc/apache2/sites-available/$domain
-echo -e "               <Directory /var/www/vhosts/$domain>" >> /etc/apache2/sites-available/$domain
+echo -e "       DocumentRoot $vhost/$domain" >> /etc/apache2/sites-available/$domain
+echo -e "               <Directory $vhost/$domain>" >> /etc/apache2/sites-available/$domain
 echo -e "                       Options Indexes FollowSymLinks MultiViews" >> /etc/apache2/sites-available/$domain
 echo -e "                       AllowOverride all" >> /etc/apache2/sites-available/$domain
 echo -e "               </Directory>" >> /etc/apache2/sites-available/$domain
@@ -37,20 +39,20 @@ mkdir -p /tmp/wordpress
 cd /tmp/wordpress
 wget http://wordpress.org/latest.tar.gz
 tar xvf /tmp/wordpress/latest.tar.gz
-mv /tmp/wordpress/wordpress/* /var/www/vhosts/$domain
-chown www-data:www-data /var/www/vhosts/$domain/wp-content
-mv /var/www/vhosts/$domain/wp-config-sample.php /var/www/vhosts/$domain/wp-config.php
-sed -i s/"define('DB_NAME', 'database_name_here');"/"define('DB_NAME', '$databasename');"/  /var/www/vhosts/$domain/wp-config.php
-sed -i s/"define('DB_USER', 'username_here');"/"define('DB_USER', '$databaseuser');"/  /var/www/vhosts/$domain/wp-config.php
-sed -i s/"define('DB_PASSWORD', 'password_here');"/"define('DB_PASSWORD', '$databasepass');"/ /var/www/vhosts/$domain/wp-config.php
-sed -i "/define('AUTH_KEY'/d" /var/www/vhosts/$domain/wp-config.php
-sed -i "/define('SECURE_AUTH_KEY/d" /var/www/vhosts/$domain/wp-config.php
-sed -i "/define('LOGGED_IN_KEY'/d" /var/www/vhosts/$domain/wp-config.php
-sed -i "/define('NONCE_KEY'/d" /var/www/vhosts/$domain/wp-config.php
-sed -i "/define('AUTH_SALT'/d" /var/www/vhosts/$domain/wp-config.php
-sed -i "/define('SECURE_AUTH_SALT'/d" /var/www/vhosts/$domain/wp-config.php
-sed -i "/define('LOGGED_IN_SALT'/d" /var/www/vhosts/$domain/wp-config.php
+mv /tmp/wordpress/wordpress/* $vhost/$domain
+chown www-data:www-data $vhost/$domain/wp-content
+mv $vhost/$domain/wp-config-sample.php $vhost/$domain/wp-config.php
+sed -i s/"define('DB_NAME', 'database_name_here');"/"define('DB_NAME', '$databasename');"/  $vhost/$domain/wp-config.php
+sed -i s/"define('DB_USER', 'username_here');"/"define('DB_USER', '$databaseuser');"/  $vhost/$domain/wp-config.php
+sed -i s/"define('DB_PASSWORD', 'password_here');"/"define('DB_PASSWORD', '$databasepass');"/ $vhost/$domain/wp-config.php
+sed -i "/define('AUTH_KEY'/d" $vhost/$domain/wp-config.php
+sed -i "/define('SECURE_AUTH_KEY/d" $vhost/$domain/wp-config.php
+sed -i "/define('LOGGED_IN_KEY'/d" $vhost/$domain/wp-config.php
+sed -i "/define('NONCE_KEY'/d" $vhost/$domain/wp-config.php
+sed -i "/define('AUTH_SALT'/d" $vhost/$domain/wp-config.php
+sed -i "/define('SECURE_AUTH_SALT'/d" $vhost/$domain/wp-config.php
+sed -i "/define('LOGGED_IN_SALT'/d" $vhost/$domain/wp-config.php
 wget -O salts.php https://api.wordpress.org/secret-key/1.1/salt/ 
-sed -i -e "/define('NONCE_SALT[^\n]*/{r salts.php" -e "d}" /var/www/vhosts/$domain/wp-config.php
+sed -i -e "/define('NONCE_SALT[^\n]*/{r salts.php" -e "d}" $vhost/$domain/wp-config.php
 rm salts.php
 rm -rf /tmp/wordpress
