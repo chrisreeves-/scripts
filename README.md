@@ -1,6 +1,6 @@
 # My Bash Scripts
 This is just a small collection of bash scripts I have put together over the last year to help with administration
-of Linux based servers.
+of Linux based servers. These are written on Linux Ubuntu and Debian in mind.
 
 ## How to install
 git clone https://github.com/chrisreeves-/bash.git
