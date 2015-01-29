@@ -1,5 +1,6 @@
 #!/bin/bash
 hostname=$HOSTNAME
+echo "CAUTION!: This will remove the known_hosts file"
 echo "Script to get keys from remote server and import into current user"
 echo -e "What server are you getting the key from?: \c "
 read rserver
