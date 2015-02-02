@@ -7,6 +7,24 @@ read mysqlpass
 mysql -u $mysqllogin -p$mysqlpass -e "SHOW databases;"
 echo -e "Please specify desired database name: \c "
 read databasename
+# Check no response for mySQL username
+if [ -z $mysqllogin];
+  then
+    echo "You did not enter a mySQL user name"
+    exit
+fi
+# Check no response for mySQL password
+if [ -z $mysqlpass];
+  then
+    echo "You did not enter a mySQL password"
+    exit
+fi
+# Check no response for database name
+if [ -z $databasename];
+  then
+    echo "You did not enter a database name"
+    exit
+fi
 if [ ! -d /backups/$databasename ] ; then
 mkdir -p /backups/$databasename
 fi
