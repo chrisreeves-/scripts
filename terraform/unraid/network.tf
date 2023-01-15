@@ -1,5 +1,6 @@
 resource "libvirt_network" "network" {
   name      = "network"
-  mode      = "nat"
-  addresses = ["10.64.10.48/27"]
+  mode      = "bridge"
+  bridge    = "br0"
+  addresses = ["10.64.10.0/24"]
 }

@@ -1,6 +1,9 @@
 resource "libvirt_domain" "domain" {
-  name   = "servernamehere"
-  memory = "4096"
+  name      = "servername"
+  vcpu      = "4"
+  memory    = "4"
+  running   = false
+  autostart = true
 
   cloudinit = libvirt_cloudinit_disk.commoninit.id
 
@@ -9,7 +12,7 @@ resource "libvirt_domain" "domain" {
   }
 
   disk {
-    volume_id = libvirt_volume.vtiger-qcow2.id
+    volume_id = libvirt_volume.qcow2.id
     scsi      = true
   }
 }

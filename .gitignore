@@ -1,0 +1,11 @@
+**/.DS_Store
+.dccache
+.idea
+**/.terraform
+**/.terraform.lock.hcl
+**/venv
+node_modules
+package*.*
+**/__pycache__
+**/test
+
