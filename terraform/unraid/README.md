@@ -21,7 +21,7 @@ https://sourceforge.net/projects/cdrtools/
 2. Search for `listen_addr = "127.0.0.1"`
 3. Change to `listen_addr = "0.0.0.0"`
 
-![img.png](img.png)
+![img.png](images/img.png)
 
 ## Expanding Cloud Init Disk
 To expand the server disk you need to run `qemu-img` on the Unraid host.
