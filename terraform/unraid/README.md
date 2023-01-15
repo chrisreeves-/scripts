@@ -20,6 +20,7 @@ https://sourceforge.net/projects/cdrtools/
 1. Use your favorite command line editor to open `/etc/libvirt/libvirtd.conf`
 2. Search for `listen_addr = "127.0.0.1"`
 3. Change to `listen_addr = "0.0.0.0"`
+
 ![img.png](img.png)
 
 ## Expanding Cloud Init Disk
