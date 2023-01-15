@@ -16,8 +16,20 @@ https://registry.terraform.io/providers/dmacvicar/libvirt/latest/docs
 ## mkisofs
 https://sourceforge.net/projects/cdrtools/
 
+### mkisofs PATH
+```shell
+path="/usr/local/bin/mkisofs"
+
+if [ ! -f $path ]; then
+  cp /source/path/mkisofs /usr/local/bin
+  echo "Copied mkisofs to PATH"
+  else
+  echo "mkisofs already in PATH"
+fi
+```
+
 ## Change Libvirt Listen Address
-1. Use your favorite command line editor to open `/etc/libvirt/libvirtd.conf`
+1. Use your favorite command line editor to open `/etc/libvirt/libvirtd.conf` on the Unraid host
 2. Search for `listen_addr = "127.0.0.1"`
 3. Change to `listen_addr = "0.0.0.0"`
 
@@ -35,12 +47,14 @@ qemu-img resize /mnt/user/images/$vm_name-pool/$vm_name-ubuntu-$version_ubuntu.q
 virsh start $vm_name
 ```
 
+_Note: You cannot resize the size when it is in use and locked therefore the vitual machine needs to be in a powered off state hence the `virsh` command to start the virtual machine once the disk size has changed. I've also set the virtual machine to be in a powered off state once created so this step can be run straight afterwards._
+
 ## Helpful Examples
 
-Example init: https://cloudinit.readthedocs.io/en/latest/topics/examples.html
+Example Cloud Init: https://cloudinit.readthedocs.io/en/latest/topics/examples.html
 
-Example tf: https://github.com/dmacvicar/terraform-provider-libvirt/blob/main/examples/v0.12/ubuntu/ubuntu-example.tf
+Example Terraform: https://github.com/dmacvicar/terraform-provider-libvirt/blob/main/examples/v0.12/ubuntu/ubuntu-example.tf
 
-Add user https://github.com/vmware/photon/issues/659 (How to set password)
+Create Secret Hash: https://github.com/vmware/photon/issues/659
 
 Libvirt Listen Address: https://wiki.libvirt.org/page/Libvirt_daemon_is_not_listening_on_tcp_ports_although_configured_to
