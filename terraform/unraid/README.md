@@ -43,7 +43,24 @@ _Example:_
 vm_name="nameofserver"
 vm_disk_size="desired size in GB"
 version_ubuntu="Ubuntu version")
-qemu-img resize /mnt/user/images/$vm_name-pool/$vm_name-ubuntu-$version_ubuntu.qcow2 +$vm_disk_size
+state=$(virsh domstate $vm_name)
+file_qcow="/mnt/user/images/$vm_name-pool/$vm_name-ubuntu-$version_ubuntu.qcow2"
+
+if [ $state == "running" ]
+then
+	echo "Stopping VM to get lock on disk"
+  virsh destroy $vm_name
+else
+	echo "VM already in stopped state"
+fi
+
+if [ -f $file_qcow ]; 
+then 
+	echo "Image already exists, skipping resizing"
+else
+	qemu-img resize $file_qcow +$vm_disk_size
+fi
+
 virsh start $vm_name
 ```
 
