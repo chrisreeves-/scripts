@@ -1,9 +1,11 @@
 import os
 import openai
+import sys
 
 # Set the OpenAI API key
 print("You can create an API key from here: https://beta.openai.com/account/api-keys")
 key = input("Please enter the OpenAI API key: ")
+
 if key == "":
     os.getenv("OPENAI_API_KEY")
 else:
@@ -13,7 +15,12 @@ else:
 model = input("""
 text = ['text-davinci-002'], ['text-currie-001'], ['text-babbage-001'], ['text-ada-001']
 What OpenAI model do you want to use?: """)
-model_engine = str.lower(model)
+
+if model != "text-davinci-002" or "text-currie-001" or "text-babbage-001" or "text-ada-001":
+    print("Model input error")
+    sys.exit()
+else:
+    model_engine = str.lower(model)
 
 # Ask a question
 message = input("What do you want to ask?: ")
