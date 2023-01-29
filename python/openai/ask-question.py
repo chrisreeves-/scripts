@@ -17,10 +17,11 @@ text = ['text-davinci-002'], ['text-currie-001'], ['text-babbage-001'], ['text-a
 What OpenAI model do you want to use?: """)
 
 if model != "text-davinci-002" or "text-currie-001" or "text-babbage-001" or "text-ada-001":
+    model_engine = str.lower(model)
+else:
     print("Model input error")
     sys.exit()
-else:
-    model_engine = str.lower(model)
+
 
 # Ask a question
 message = input("What do you want to ask?: ")
