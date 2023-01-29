@@ -1,12 +1,18 @@
 import openai
 
 # Set the OpenAI API key
+print("You can create an API key from here: https://beta.openai.com/account/api-keys")
 key = input("Please enter the OpenAI API key: ")
 openai.api_key = key
-message = input("What do you want to ask?: ")
 
 # Define the model and prompt to use
-model_engine = "text-davinci-002"
+model = input("""
+text = ['text-davinci-002'], ['text-currie-001'], ['text-babbage-001'], ['text-ada-001']
+What OpenAI model do you want to use?: """)
+model_engine = str.lower(model)
+
+# Ask a question
+message = input("What do you want to ask?: ")
 prompt = message
 
 # Generate a response
@@ -22,4 +28,3 @@ result = openai.Completion.create(
 # Print the response
 message = result.choices[0].text
 print(message)
-
