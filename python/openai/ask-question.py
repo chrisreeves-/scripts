@@ -1,9 +1,13 @@
+import os
 import openai
 
 # Set the OpenAI API key
 print("You can create an API key from here: https://beta.openai.com/account/api-keys")
 key = input("Please enter the OpenAI API key: ")
-openai.api_key = key
+if key == "":
+    os.getenv("OPENAI_API_KEY")
+else:
+    openai.api_key = key
 
 # Define the model and prompt to use
 model = input("""
@@ -16,7 +20,7 @@ message = input("What do you want to ask?: ")
 prompt = message
 
 # Generate a response
-result = openai.Completion.create(
+response = openai.Completion.create(
     engine=model_engine,
     prompt=prompt,
     max_tokens=1024,
@@ -26,5 +30,5 @@ result = openai.Completion.create(
 )
 
 # Print the response
-message = result.choices[0].text
+message = response.choices[0].text
 print(message)
