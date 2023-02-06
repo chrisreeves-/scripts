@@ -8,7 +8,7 @@ cidr_vm = "IP-TO-MONITOR"
 api = Shodan(shodan_api)
 
 # Create Alert
-api.create_alert(name='Test Alert', ip=cidr_vm, expires=0)
+api.create_alert(name=name, ip=cidr_vm, expires=0)
 
 # Get Alert ID
 data = api.alerts(include_expired=True)
