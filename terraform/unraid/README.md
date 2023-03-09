@@ -1,4 +1,8 @@
-# Terraform for Unraid
+# Terraform for Unraid 
+
+## Description
+
+Deploy an Unraid virtual machine using Terraform and some hackery
 
 ## Requirements
 
