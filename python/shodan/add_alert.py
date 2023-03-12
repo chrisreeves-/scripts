@@ -37,7 +37,7 @@ for i in data:
     alert = i['name']
     if alert == shodan_name:
         print("HTTP 500 - Existing asset found ...")
-        sys.exit(1)
+        sys.exit(0)
 
 # Creating alert monitor
 api.create_alert(name=shodan_name,
