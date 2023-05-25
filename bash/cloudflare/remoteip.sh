@@ -15,3 +15,4 @@ else
 fi
 
 sed -i 's/LogFormat \"%h %l %u %t \\\"%r\\\" %>s %O \\\"%{Referer}i\\" \\"%{User-Agent}i\\i\\"" combined/LogFormat "%a %l %u %t \\"%r\\" %>s %O \\"%{Referer}i\\" \\"%{User-Agent}i\\"" combined/g' /etc/apache2/apache2.conf
+a2enconf remoteip
