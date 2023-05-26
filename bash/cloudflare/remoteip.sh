@@ -29,7 +29,13 @@ sed -i 's/LogFormat \"%h %l %u %t \\\"%r\\\" %>s %O \\\"%{Referer}i\\\" \\\"%{Us
 a2enconf remoteip
 
 # Test the Apache config
-apache2ctl configtest
+configtest=$(apache2ctl configtest)
 
-# If the config test is successful, restart Apache
-systemctl restart apache2
+# if the apache config returns OK, restart Apache
+if [ "$configtest" = "Syntax OK" ]
+then
+    echo "Apache config OK, restarting Apache ..."
+    systemctl restart apache2
+else
+    echo "Apache config not OK, not restarting Apache ..."
+fi
