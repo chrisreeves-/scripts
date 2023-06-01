@@ -23,3 +23,6 @@ else
     echo "Header always set Permissions-Policy \"fullscreen 'none' \"" >> /etc/apache2/apache2.conf
     echo "Header always append X-Frame-Options DENY" >> /etc/apache2/apache2.conf
 fi
+
+# Restart Apache2
+systemctl restart apache2
