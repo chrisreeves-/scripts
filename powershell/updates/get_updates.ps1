@@ -1,5 +1,5 @@
 Install-Module -Name PSWindowsUpdate -Force
-$updates = Get-WindowsUpdate -MaxUpdatesPerDownload 100 -MaxUpdatesPerInstall 100
+$updates = Get-WindowsUpdate
 if ($updates.Count -eq 0) {
     Write-Host "No updates found."
 } else {
