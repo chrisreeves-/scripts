@@ -9,18 +9,22 @@ These rules have been developed to pull in the latest threat intelligence from t
 * [Emerging Threats](https://rules.emergingthreats.net)
 * [Spamhaus](https://www.spamhaus.org)
 
+Also included are custom rules to block traffic from geographic locations.
+_You should customise this for your needs_
+
 ## Requirements
 
 ```text
 os-firewall
 opnsense api key
+maxmind api key for geo blocking
 ```
 
 This has been tested on:
 
 * Opnsense 23.7.2
 
-## Best Proctices
+## Best Practices
 
 1. Create a new user
 2. Generate a new extra long password for root
