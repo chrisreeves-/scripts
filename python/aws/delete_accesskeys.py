@@ -1,9 +1,9 @@
 import boto3
 
 username = ["iam_user1", "iam_user2", "iam_user3", "iam_user4"]
-aws_access_key_id=""
-aws_secret_access_key=""
-region_name=""
+aws_access_key_id="" # Add your AWS access key
+aws_secret_access_key="" # Add your AWS secret
+region_name="" # Add your AWS region
 
 # Connect to AWS
 iam = boto3.client('iam',
